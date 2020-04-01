@@ -7,7 +7,8 @@ Write a function named sortBackwards that takes in an array of numbers and retur
 ------------------------------------------------------------------------------------------------ */
 
 const sortBackwards = (arr) => {
-  return true; 
+  arr.sort((a,b) => b-a);
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -21,7 +22,7 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetize = (arr) => {
-  arr.sort((a,b) => (a.toUpperCase < b.toUpperCase));
+  arr.sort();
   return arr; 
 };
 
@@ -45,7 +46,7 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetizeBetter = (arr) => {
-  arr.sort((a,b) => (a.toUpperCase > b.toUpperCase));
+  arr.sort((a,b) => a.toLowerCase().localeCompare(b.toLowerCase()));
   return arr;
 };
 
@@ -75,7 +76,7 @@ For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 ------------------------------------------------------------------------------------------------ */
 
 const sortNumbersByLength = (arr) => {
-  return arr.sort((a,b) => a.length < b.length);
+  return arr.sort((a,b) => a.toString().length - b.toString().length);
 };
 
 /*-----------------------------------------------------------------------------------------------
@@ -97,7 +98,10 @@ const people = [
 ];
 
 const sortPeople = (arr) => {
-  // Solution code here...
+  return arr.sort((a, b) => 
+    a.lastName > b.lastName ? 1 :
+      (a.lastName < b.lastName ? -1 :
+        0));
 };
 
 /* ------------------------------------------------------------------------------------------------
