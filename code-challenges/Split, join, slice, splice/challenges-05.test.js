@@ -15,7 +15,10 @@ For example, if the input is 'Welcome', the output will be:
 
 const howMuchPencil = (str) => {
   let result = [];
-  // Solution code here...
+  for (let i = 0; i < str.length + 1; i++) {
+    let sharpened = str.slice(i, str.length);
+    result.push(sharpened);
+  }
   return result;
 };
 
@@ -28,7 +31,8 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 ------------------------------------------------------------------------------------------------ */
 
 const wordsToCharList = (arr) => {
-  // Solution code here...
+  let result = arr.split('');
+  return result;
 };
 
 
@@ -74,8 +78,11 @@ const gruffaloCrumble = {
 
 
 const listFoods = (recipe) => {
-  let result = [];
-  // Solution code here...
+  let regex =/(.+?\s+.+?\s+)/;
+  let result = recipe.ingredients.map(ing => {
+    let string = ing.replace(regex, '');
+    return string.trimLeft();
+  });
   return result;
 };
 
@@ -88,8 +95,16 @@ You may also use other string or array methods.
 ------------------------------------------------------------------------------------------------ */
 
 const splitFoods = (recipe) => {
-  let result = [];
-  // Solution code here...
+  let result = recipe.ingredients.map(ing => {
+    let arr = ing.split(' ');
+    if (arr.length === 3) {
+      return arr[arr.length - 1];
+    } else if (arr.length === 4) {
+      return `${arr[arr.length - 2]} ${arr[arr.length - 1]}`;
+    } else if (arr.length === 5) {
+      return `${arr[arr.length - 3]} ${arr[arr.length - 2]} ${arr[arr.length - 1]}`;
+    }
+  });
   return result;
 };
 
@@ -104,8 +119,11 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 ------------------------------------------------------------------------------------------------ */
 
 const stepActions = (recipe) => {
-  let result = [];
-  // Solution code here...
+  let arr = recipe.steps;
+  let result = arr.map(step => {
+    let splitStep = step.split(' ');
+    return splitStep[0];
+  });
   return result;
 };
 
@@ -123,7 +141,12 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const removeEvenValues = (arr) => {
-  // Solution code here...
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      arr.splice(i, 1);
+      i--;
+    }
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -142,7 +165,14 @@ removeLastCharacters('Gregor', 9) returns ''
 ------------------------------------------------------------------------------------------------ */
 
 const removeLastCharacters = (str, numberOfCharacters) => {
-  // Solution code here...
+  if (numberOfCharacters < 0) {
+    return str;
+  }
+    
+  const arr = str.split('');
+  arr.splice(-numberOfCharacters);
+  const result = arr.join('');
+  return result;
 };
 
 
