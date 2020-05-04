@@ -59,7 +59,7 @@ const divisibleByFiveTwoToThePower = (input) => {
         return true;
       }
     }).map((num) => {
-      console.log(num);
+      // console.log(num);
       return Math.pow(2, num);
     }));
   });
@@ -136,7 +136,7 @@ let findMaleAndFemale = (data) => {
       return true;
     }
   }).reduce((acc, val, idx, src) => {
-    console.log(idx);
+    // console.log(idx);
     if (idx < src.length - 1) {
       return acc + val.name + ' and ';
     } else {
